@@ -1,7 +1,7 @@
 ---
 layout: post
 title: My First Blog - Use Lateral subquery to cut down the Query Run Time
-published: false
+published: true
 ---
 
 One fine morning, I was asked for a help on a query. At first glance, things seemed very straight forward. I wrote a version of the query with the results expected and boom!It worked. Well, the query fetched the results we wanted, although the time it took to fetch the results were not acceptable, especially in the times we live in. It took about 29 secs...That's definitely not acceptable. So, I started attempting to write other variations of the query and things only went south from there.
@@ -34,6 +34,7 @@ Indexes:
 	
 My first version of the query is as follows, which ran for 29 secs:
 
+{% highlight python %}
 SELECT f.username, f.fl_cnt 
 FROM (SELECT followee_uid, username, COUNT(followee_uid) AS fl_cnt FROM follows
 INNER JOIN users ON followee_uid = uid AND last_update >= (now() - interval '7 days')
@@ -58,6 +59,7 @@ I decided to pull the magic card: EXPLAIN comand. So, here's the query plan for 
                      ->  Index Scan using idx_user_last_update on users u  (cost=0.11..50586.19 rows=51417 width=20)
                            Index Cond: (last_update >= (now() - '7 days'::interval))
 (11 rows)
+{% endhighlight %}
 
 RESULT: 29 - 32 secs
 

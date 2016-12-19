@@ -12,4 +12,4 @@ Loves to sing carnartic music and play Throwball.
 
 ### Contact me
 
-[email@domain.com](mailto:hema@planetbazaar.com)
+[hema@planetbazaar.com](mailto:hema@planetbazaar.com)

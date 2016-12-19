@@ -42,8 +42,11 @@ GROUP BY followee_uid, username
 HAVING COUNT(followee_uid) > 1000) as f 
 ORDER BY f.fl_cnt DESC
 LIMIT 100;
+{% endhighlight %}
 
 I decided to pull the magic card: EXPLAIN comand. So, here's the query plan for the above query:
+
+{% highlight sql %}
 
                                                      QUERY PLAN                                                      
 ---------------------------------------------------------------------------------------------------------------------
@@ -76,8 +79,6 @@ HAVING COUNT(f.followee_uid) > 1000) as temp ON temp.followee_uid = u.uid
 WHERE u.last_update >= (now() - interval '7 days')
 ORDER BY f.fl_cnt DESC LIMIT 100;
 
-RESULT: Permance was still sucky.
-
                                                      QUERY PLAN                                                      
 ---------------------------------------------------------------------------------------------------------------------
  GroupAggregate  (cost=1028403.19..1034074.81 rows=945270 width=20)
@@ -92,6 +93,8 @@ RESULT: Permance was still sucky.
                            Index Cond: (last_update >= (now() - '7 days'::interval))
 (10 rows)
 {% endhighlight %}
+
+RESULT: Permance was still sucky.
 
 As you can see from the above query plans, the Sequential scan on follows table was the bottle neck. And I wanted to address that. Then, I came across Lateral Subqueries and wanted to try it out as I can refer to the outer table in the sub-query section of the query.
 

@@ -34,7 +34,7 @@ Indexes:
 	
 My first version of the query is as follows, which ran for 29 secs:
 
-{% highlight python %}
+{% highlight sql %}
 SELECT f.username, f.fl_cnt 
 FROM (SELECT followee_uid, username, COUNT(followee_uid) AS fl_cnt FROM follows
 INNER JOIN users ON followee_uid = uid AND last_update >= (now() - interval '7 days')
@@ -65,6 +65,8 @@ RESULT: 29 - 32 secs
 
 Attempt 2: Removed the correlated query and used an INNER JOIN
 
+{% highlight sql %}
+
 SELECT u.username, temp.fl_cnt 
 FROM users u
 INNER JOIN (SELECT f.followee_uid, COUNT(f.followee_uid) as fl_cnt
@@ -89,11 +91,13 @@ RESULT: Permance was still sucky.
                      ->  Index Scan using idx_user_last_update on users u  (cost=0.11..53676.33 rows=54401 width=20)
                            Index Cond: (last_update >= (now() - '7 days'::interval))
 (10 rows)
+{% endhighlight %}
 
 As you can see from the above query plans, the Sequential scan on follows table was the bottle neck. And I wanted to address that. Then, I came across Lateral Subqueries and wanted to try it out as I can refer to the outer table in the sub-query section of the query.
 
 Attempt 3:
 
+{% highlight sql %}
 SELECT u.username, temp.fl_cnt 
 FROM users u,
 LATERAL (SELECT COUNT(f.followee_uid) as fl_cnt
@@ -113,6 +117,7 @@ ORDER BY f.fl_cnt DESC LIMIT 100
          ->  Index Only Scan using idx_followee_uid on follows f  (cost=0.11..1966.08 rows=1011 width=8)
                Index Cond: (followee_uid = u.uid)
 (7 rows)
+{% endhighlight %}
 
 RESULT: under 2 secs run time
 

@@ -7,6 +7,8 @@ published: false
 One fine morning, I was asked for a help on a query. At first glance, things seemed very straight forward. I wrote a version of the query with the results expected and boom!It worked. Well, the query fetched the results we wanted, although the time it took to fetch the results were not acceptable, especially in the times we live in. It took about 29 secs...That's definitely not acceptable. So, I started attempting to write other variations of the query and things only went south from there.
 
 Here's the table structure for the tables to be queried:
+
+{% highlight sql %}
 users
    Column    |           Type           |                   Modifiers                   
 -------------+--------------------------+-----------------------------------------------
@@ -31,6 +33,7 @@ Indexes:
     "follows_pkey" PRIMARY KEY, btree (id)
     "idx_followee_uid" btree (followee_uid)
     "idx_follower_uid" btree (follower_uid)
+{% endhighlight %}
 	
 My first version of the query is as follows, which ran for 29 secs:
 

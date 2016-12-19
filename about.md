@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I'm a freelance consultant living in the Bay Area. I love to learn new languages and challenge myself to new frameworks and technologies that come my way.
 
-### More Information
+### My Hobbies/Interests
 
-A place to include any other types of information that you'd like to include about yourself.
+Loves to sing carnartic music and play Throwball.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[email@domain.com](mailto:hema@planetbazaar.com)

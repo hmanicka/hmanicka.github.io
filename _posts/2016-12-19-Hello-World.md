@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Welcome to my Blog!
+title: Welcome to my Blog
 ---
 
 ![_config.yml]({{ site.baseurl }}/images/config.png)

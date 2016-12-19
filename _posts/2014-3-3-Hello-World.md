@@ -3,6 +3,8 @@ layout: post
 title: Welcome to Blog!
 ---
 
+![_config.yml]({{ site.baseurl }}/images/config.png)
+
 # Summary of my Blog
 
 I wanted to blog about the solutions I find along the way while developing software for the web/mobile. 

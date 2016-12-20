@@ -8,4 +8,4 @@ I'm a freelance consultant living in the Bay Area. I love to learn new languages
 
 ### My Hobbies/Interests
 
-Loves to sing carnartic music and play Throwball.
+Enjoys long walks with my golden doodle. Loves to sing carnartic music and play Throwball. 

@@ -4,7 +4,9 @@ title: Use Lateral subquery to cut down the Query run time
 published: true
 ---
 
-One fine morning, I was asked for a help on a query. At first glance, things seemed very straight forward. I wrote a version of the query with the results expected and boom! It worked. Well, the query fetched the results we wanted, although the time it took to fetch the results were not acceptable, especially in the times we live in. It took about 29 secs...That's definitely not acceptable. So, I started attempting to write other variations of the query and things only went south from there,until...
+One fine morning, I was asked for help with a query. At first glance, things seemed very straight forward. I wrote a version of the query with the results expected and BOOM! It worked. Well, the query fetched the results we wanted, although the time it took to fetch the results were not acceptable, especially in the times we live in. It took about 29 secs...That's definitely not acceptable. So, I started attempting to write other variations of the query and things only went south from there,until...
+
+The expection was that the query return the first 100 users who have more than 1000 followers along with the follower count and who have logged in the last 7 days.
 
 Here's the table structure for the tables to be queried:
 
@@ -35,7 +37,7 @@ Indexes:
     "idx_follower_uid" btree (follower_uid)
 {% endhighlight %}
 	
-My first version of the query is as follows, which ran for 29 secs:
+My first version of the query is as follows, which returned the usernames along with the follower count, although it ran for 29 secs:
 
 {% highlight sql %}
 SELECT f.username, f.fl_cnt 

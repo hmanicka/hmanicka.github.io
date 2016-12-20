@@ -4,7 +4,7 @@ title: Use Lateral subquery to cut down the Query run time
 published: true
 ---
 
-One fine morning, I was asked for a help on a query. At first glance, things seemed very straight forward. I wrote a version of the query with the results expected and boom!It worked. Well, the query fetched the results we wanted, although the time it took to fetch the results were not acceptable, especially in the times we live in. It took about 29 secs...That's definitely not acceptable. So, I started attempting to write other variations of the query and things only went south from there...until.
+One fine morning, I was asked for a help on a query. At first glance, things seemed very straight forward. I wrote a version of the query with the results expected and boom! It worked. Well, the query fetched the results we wanted, although the time it took to fetch the results were not acceptable, especially in the times we live in. It took about 29 secs...That's definitely not acceptable. So, I started attempting to write other variations of the query and things only went south from there,until...
 
 Here's the table structure for the tables to be queried:
 

@@ -129,7 +129,5 @@ RESULT: under 2 secs run time
 
 Using Lateral subquery addressed the Sequential scan on follows table and cut down the query time to under 2 secs. 
 
-For questions/comments, please email me at [hema@planetbazaar.com](mailto:hema@planetbazaar.com)
-
 Foot Notes:
 Queries tried on Postgres version 9.3.15

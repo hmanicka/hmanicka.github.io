@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Use Lateral subquery to cut down the Query Run Time
+title: Use Lateral subquery to cut down the Query run time
 published: true
 ---
 

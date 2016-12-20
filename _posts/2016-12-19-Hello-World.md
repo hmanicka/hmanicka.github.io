@@ -4,7 +4,7 @@ title: My First Blog - Use Lateral subquery to cut down the Query Run Time
 published: true
 ---
 
-One fine morning, I was asked for a help on a query. At first glance, things seemed very straight forward. I wrote a version of the query with the results expected and boom!It worked. Well, the query fetched the results we wanted, although the time it took to fetch the results were not acceptable, especially in the times we live in. It took about 29 secs...That's definitely not acceptable. So, I started attempting to write other variations of the query and things only went south from there.
+One fine morning, I was asked for a help on a query. At first glance, things seemed very straight forward. I wrote a version of the query with the results expected and boom!It worked. Well, the query fetched the results we wanted, although the time it took to fetch the results were not acceptable, especially in the times we live in. It took about 29 secs...That's definitely not acceptable. So, I started attempting to write other variations of the query and things only went south from there...until.
 
 Here's the table structure for the tables to be queried:
 
@@ -97,7 +97,7 @@ ORDER BY f.fl_cnt DESC LIMIT 100;
 (10 rows)
 {% endhighlight %}
 
-RESULT: Permance was still sucky.
+RESULT: Performance was still sucky.
 
 As you can see from the above query plans, the Sequential scan on follows table was the bottle neck. And I wanted to address that. Then, I came across Lateral Subqueries and wanted to try it out as I can refer to the outer table in the sub-query section of the query.
 
@@ -126,6 +126,10 @@ ORDER BY f.fl_cnt DESC LIMIT 100
 {% endhighlight %}
 
 RESULT: under 2 secs run time
+
+Using Lateral subquery addressed the Sequential scan on follows table and cut down the query time to under 2 secs. 
+
+For questions/comments, please email me at [hema@planetbazaar.com](mailto:hema@planetbazaar.com)
 
 Foot Notes:
 Queries tried on Postgres version 9.3.15
